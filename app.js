@@ -5,6 +5,7 @@ const app=express()
 const cors=require('cors')
 const categoriesRouter=require("./routes/categories.route")
 const articlesRouter=require("./routes/article.route")
+const scategoriesRouter=require("./routes/scategories.route")
 dotenv.config()
 app.get("/",(req,res)=>{
 
@@ -25,6 +26,7 @@ app.get("/contact",(req,res)=>{
 
 })
 app.use("/api/categories",categoriesRouter)
+app.use("/api/scategories",scategoriesRouter)
 app.use("/api/articles",articlesRouter)
 app.listen(process.env.PORT,()=>
     
