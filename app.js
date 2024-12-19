@@ -7,11 +7,7 @@ const categoriesRouter=require("./routes/categories.route")
 const articlesRouter=require("./routes/article.route")
 const scategoriesRouter=require("./routes/scategories.route")
 dotenv.config()
-app.get("/",(req,res)=>{
 
-    res.send("page accueil")
-
-})
 //BodyParser Middleware
 app.use(express.json());
 app.use(cors())
@@ -20,9 +16,9 @@ mongoose.connect(process.env.DATABASECLOUD)
 .then(() => {console.log("DataBase Successfully Connected");})
 .catch(err => { console.log("Unable to connect to database", err);
 process.exit();});
-app.get("/contact",(req,res)=>{
+app.get("/",(req,res)=>{
 
-    res.send("page de contact")
+    res.send("page accueil")
 
 })
 app.use("/api/categories",categoriesRouter)
