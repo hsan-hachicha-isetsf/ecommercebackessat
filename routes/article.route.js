@@ -19,6 +19,7 @@ try {
 await nouvarticle.save();
 res.status(200).json(nouvarticle );
 } catch (error) {
+    
 res.status(404).json({ message: error.message });}
 });
 // afficher la liste des articles par page
@@ -42,7 +43,7 @@ res.status(404).json({ message: error.message });
 // chercher un article
 router.get('/:articleId',async(req, res)=>{
 try {
-const art = await Article.findById(req.params.articleId);
+const art = await Article.findById(req.params.articleId).populate("scategorieID").exec();
 res.status(200).json(art);
 } catch (error) {
 res.status(404).json({ message: error.message });
