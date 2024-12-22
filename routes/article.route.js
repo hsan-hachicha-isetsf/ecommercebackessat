@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Article=require("../models/article")
-const Scategorie =require("../models/scategorie")
+const Scategorie =require("../models/scategorie");
+const { auth } = require('../middleware/auth');
 // afficher la liste des articles.
-router.get('/', async (req, res, )=> {
+router.get('/',auth, async (req, res, )=> {
 try {
 const articles = await Article.find({}, null, {sort: {'_id': -
 1}}).populate("scategorieID").exec();
@@ -13,7 +14,7 @@ res.status(404).json({ message: error.message });
 }
 });
 // créer un nouvel article
-router.post('/', async (req, res) => {
+router.post('/',auth, async (req, res) => {
 const nouvarticle = new Article(req.body)
 try {
 await nouvarticle.save();

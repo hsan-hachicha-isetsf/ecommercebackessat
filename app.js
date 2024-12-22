@@ -6,7 +6,7 @@ const cors=require('cors')
 const categoriesRouter=require("./routes/categories.route")
 const articlesRouter=require("./routes/article.route")
 const scategoriesRouter=require("./routes/scategories.route")
-
+const userRouter =require("./routes/user.route")
 const path = require('path'); // Ajout de l'importation de path
 dotenv.config()
 
@@ -22,7 +22,7 @@ process.exit();});
 app.use("/api/categories",categoriesRouter)
 app.use("/api/scategories",scategoriesRouter)
 app.use("/api/articles",articlesRouter)
-
+app.use('/api/users', userRouter);
 //dist reactjs
 app.use(express.static(path.join(__dirname, './client/build'))); 
 
